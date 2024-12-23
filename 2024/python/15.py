@@ -118,47 +118,11 @@ def double_width(_map):
     return new_map
 
 
-# def moveable_p2(_map, r, c, dr, dc):
-#     objects = []
-#     visited = set()
-#
-#     def dfs(nr, nc):
-#         pt_n = (nr, nc)
-#         if (
-#             pt_n in visited
-#             or _map[nr][nc] == "#"
-#             or not (0 <= nr < len(_map) and 0 <= nc < len(_map[0]))
-#         ):
-#             return False
-#         visited.add(pt_n)
-#         try:
-#             r_idx = abs(nr - r)
-#             objects[r_idx].append((nr, nc))
-#         except IndexError:
-#             objects.append([(nr, nc)])
-#         if _map[nr][nc] == ".":
-#             return True
-#
-#         if _map[nr][nc] == "[":  
-#             pair = (nr, nc), (nr, nc + 1)
-#             objects[abs(nr - r)].append(pair[1])
-#         else:
-#             pair = (nr, nc), (nr, nc - 1)
-#             objects[r_idx].insert(-1, pair[1])
-#         for b in pair:
-#             dfs(b[0] + dr, b[1] + dc)
-#         return True
-#
-#     if dfs(r + dr, c + dc):
-#         return True, objects
-#     return False, objects
-
-
 def moveable_p2(_map, r, c, dr, dc):
     objects = []
     visited = set()
     queue = deque([(r, c)])
-    
+
     while queue:
         nr, nc = queue.popleft()
 
@@ -175,7 +139,7 @@ def moveable_p2(_map, r, c, dr, dc):
         if r_idx >= len(objects):
             objects.append([])
         objects[r_idx].append((nr, nc))
-        
+
         if _map[nr][nc] == ".":
             continue
 
@@ -184,7 +148,7 @@ def moveable_p2(_map, r, c, dr, dc):
         elif _map[nr][nc] == "]":
             pair = (nr, nc), (nr, nc - 1)
         elif _map[nr][nc] == "@":
-            pair = [(nr,nc)]
+            pair = [(nr, nc)]
         for b in pair:
             if (b[0] + dr, b[1] + dc) not in visited:
                 queue.append((b[0] + dr, b[1] + dc))
@@ -196,12 +160,10 @@ def moveable_p2(_map, r, c, dr, dc):
     return True, objects
 
 
-
-
-
-
-def shift_p2(_map, involved, dr, dc):  # dr and dc here are going to be steps in the direction
-                                       # opposite to the one taken in the traversal
+def shift_p2(
+    _map, involved, dr, dc
+):  # dr and dc here are going to be steps in the direction
+    # opposite to the one taken in the traversal
     for row in reversed(involved):
         for r, c in reversed(row):
             br, bc = r - dr, c - dc  # reads "behind r" and "behind c"
@@ -227,7 +189,6 @@ def part2(text_data):
     # print_list_matrix(_map)
     # print(step)
     return val
-
 
 
 ####################################################################

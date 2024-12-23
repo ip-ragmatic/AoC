@@ -1,9 +1,8 @@
-from helper import matrix_dict, sub_pts, add_pts, timeit
+from helper import to_dict_matrix, sub_pts, add_pts, timeit
 from itertools import combinations
 
 
-TEST = """\
-............
+ex1 = """............
 ........0...
 .....0......
 .......0....
@@ -14,8 +13,7 @@ TEST = """\
 ........A...
 .........A..
 ............
-............\
-"""
+............"""
 
 
 def sol1(matrix: dict[tuple[int], str], part2=False):
@@ -42,10 +40,10 @@ def day8(matrix, part2=False):
 
 
 if __name__ == "__main__":
-    # print(TEST)
+    # print(ex1)
     with open("../puzzle_input/8.txt") as f:
-        data = matrix_dict(f.read())
-    # data = matrix_dict(TEST)
+        data = to_dict_matrix(f.read())
+    # data = to_dict_matrix(ex1)
     timeit(day8, data)
     timeit(day8, data, True)
 
