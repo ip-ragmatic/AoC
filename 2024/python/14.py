@@ -84,7 +84,7 @@ def display_bots(text_data, w, h, t):
 
 
 if __name__ == "__main__":
-    with open("puzzle_input/14.txt") as f:
+    with open("../puzzle_input/14.txt") as f:
         text = f.read()
         w, h = 101, 103
     safety_factor = timeit(get_safety_factor, text, w, h, 100)

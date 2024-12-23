@@ -80,7 +80,7 @@ def day12(text: str, p2=False):
 
 
 if __name__ == "__main__":
-    with open("puzzle_input/12.txt") as f:
+    with open("../puzzle_input/12.txt") as f:
         text = f.read()
     timeit(day12, text)
     timeit(day12, text, True)

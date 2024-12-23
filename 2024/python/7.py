@@ -89,7 +89,7 @@ def day7(eqns, p2=False):
 
 
 if __name__ == "__main__":
-    with open("puzzle_input/7.txt") as f:
+    with open("../puzzle_input/7.txt") as f:
         data = parse(f.read())
     # data = parse(TEST)
     timeit(day7, data)

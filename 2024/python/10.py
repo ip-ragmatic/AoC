@@ -62,7 +62,7 @@ def sol1(topomap, p2=False):
 
 
 if __name__ == "__main__":
-    with open("puzzle_input/10.txt") as f:
+    with open("../puzzle_input/10.txt") as f:
         data = f.read().split()
     timeit(sol1, data)  # part 1
     timeit(sol1, data, True)  # part 2

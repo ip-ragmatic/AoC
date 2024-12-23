@@ -54,7 +54,7 @@ def day9(diskmap: str, p2=False):
 
 
 if __name__ == "__main__":
-    with open("puzzle_input/9.txt") as f:
+    with open("../puzzle_input/9.txt") as f:
         data = f.read()
     timeit(day9, data)
     timeit(day9, data, True)

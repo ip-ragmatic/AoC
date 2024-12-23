@@ -43,7 +43,7 @@ def day8(matrix, part2=False):
 
 if __name__ == "__main__":
     # print(TEST)
-    with open("puzzle_input/8.txt") as f:
+    with open("../puzzle_input/8.txt") as f:
         data = matrix_dict(f.read())
     # data = matrix_dict(TEST)
     timeit(day8, data)

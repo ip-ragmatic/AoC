@@ -233,7 +233,7 @@ def part2(text_data):
 ####################################################################
 
 if __name__ == "__main__":
-    with open("puzzle_input/15.txt") as f:
+    with open("../puzzle_input/15.txt") as f:
         text_data = f.read()
     # timeit(part1, text_data)
     # timeit(part2, text_data)

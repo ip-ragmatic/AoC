@@ -49,7 +49,7 @@ def day11(data: list[int], iterations: int):
     return sum(stones.values())
 
 if __name__ == "__main__":
-    with open("puzzle_input/11.txt") as f:
+    with open("../puzzle_input/11.txt") as f:
         data = to_int_list(f.read())
     # data = to_int_list(TEST)
     # timeit(day11_brute, data, 25)

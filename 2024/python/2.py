@@ -1,4 +1,6 @@
+from helper import timeit
 from math import copysign
+
 
 def parse_report(path):
     with open(path) as file:
@@ -27,9 +29,9 @@ def safe_p2(report: list[int]):
     return False
 
 
-def main():
-    log = parse_report("puzzle_input/2.txt")
-    print(sum(safe_p2(report) for report in log))
+def day2(text_data):
+    log = parse_report(text_data)
+    return sum(safe_p2(report) for report in log)
 
 
 def tests():
@@ -59,4 +61,4 @@ def tests():
 
 
 if __name__ == "__main__":
-    main()
+    timeit(day2, "../puzzle_input/2.txt")

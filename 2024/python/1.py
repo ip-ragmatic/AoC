@@ -1,3 +1,6 @@
+from helper import timeit
+
+
 def sum_distances(left: list, right: list):
     left.sort()
     right.sort()
@@ -24,13 +27,12 @@ def similarity_score(left: list, right: list):
         occurs = right.count(i)
         score += i * occurs
     return score
-        
 
-def main():
-    left, right = make_lists("puzzle_input/1.txt")
-    sim_score = similarity_score(left, right)
-    print(sim_score)
+
+def day1(text_data):
+    left, right = make_lists(text_data)
+    return similarity_score(left, right)
 
 
 if __name__ == "__main__":
-    main()
+    timeit(day1, "../puzzle_input/1.txt")

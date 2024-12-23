@@ -1,3 +1,4 @@
+from helper import timeit
 from collections import deque, defaultdict
 
 TEST = r"""
@@ -115,19 +116,19 @@ def middle_val_p2(update, rules):
     return sum_middles
 
 
-def main():
+def day5(text_data):
     # order_rules, num_mtrx = parse_text(TEST)
     # val = middle_val_p2(num_mtrx, order_rules)
     # print(val)
 
-    with open("puzzle_input/5.txt") as f:
+    with open(text_data) as f:
         order_rules, num_mtrx = parse_text(f.read())
     val = middle_val_p2(num_mtrx, order_rules)
     print(val)
 
 
 if __name__ == "__main__":
-    main()
+    timeit(day5, "../puzzle_input/5.txt")
 
 
 # part 1 answers:

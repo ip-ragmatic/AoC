@@ -35,7 +35,7 @@ def day13(text: str, p2=False):
 
 
 if __name__ == "__main__":
-    with open("puzzle_input/13.txt") as f:
+    with open("../puzzle_input/13.txt") as f:
         text = f.read()
     timeit(day13, text)
     timeit(day13, text, True)

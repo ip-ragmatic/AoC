@@ -1,4 +1,4 @@
-from helper import orientations
+from helper import dirs, timeit
 
 
 def to_matrix(text):
@@ -10,14 +10,14 @@ def print_map(patrol_map):
 
 
 def turn_right(carat):
-    order = list(orientations.keys())
+    order = list(dirs.keys())
     return order[(order.index(carat) + 1) % len(order)]
 
 
 def find_carat(patrol_map):
     for i, row in enumerate(patrol_map):
         for j, obj in enumerate(row):
-            if obj in orientations:
+            if obj in dirs:
                 return obj, (i, j)
     raise ValueError("Carat not found on patrol map.")
 
@@ -25,7 +25,7 @@ def find_carat(patrol_map):
 def move_carat(patrol_map, carat_state):
     if carat_state:
         carat, pos = carat_state
-        next_pos = pos[0] + orientations[carat][0], pos[1] + orientations[carat][1]
+        next_pos = pos[0] + dirs[carat][0], pos[1] + dirs[carat][1]
 
         # if next position falls off map
         if not (0 <= next_pos[0] < len(patrol_map) and 0 <= next_pos[1] < len(patrol_map[0])):
@@ -58,7 +58,7 @@ def init_loop_positions(patrol_map, carat_state):
     obstacles_pos = set()  # tracks positions where added obstacles init loops
     while carat_state:
         carat, pos = carat_state
-        next_pos = pos[0] + orientations[carat][0], pos[1] + orientations[carat][1] 
+        next_pos = pos[0] + dirs[carat][0], pos[1] + dirs[carat][1] 
         if (
             next_pos not in tested_pos  # ensures positions don't get counted multiple times
             and 0 <= next_pos[0] < len(patrol_map)
@@ -80,20 +80,20 @@ def part1(patrol_map):
     while carat_state:
         unique_pos.add(carat_state[1])
         carat_state = move_carat(patrol_map, carat_state)
-    print(len(unique_pos))
+    return len(unique_pos)
 
 
 def part2(patrol_map):
     carat_state = find_carat(patrol_map)
     obstacle_pos = init_loop_positions(patrol_map, carat_state)
-    print(len(obstacle_pos))
+    return len(obstacle_pos)
 
 
 if __name__ == "__main__":
-    with open("puzzle_input/6.txt") as f:
+    with open("../puzzle_input/6.txt") as f:
         patrol_map = to_matrix(f.read())
-    part1(patrol_map)
-    part2(patrol_map)
+    timeit(part1, patrol_map)
+    timeit(part2, patrol_map)
 
 # part 1 answers:
 #    - 5129  (CORRECT)

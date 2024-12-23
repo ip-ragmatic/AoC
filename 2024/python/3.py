@@ -1,3 +1,4 @@
+from helper import timeit
 import re
 
 
@@ -31,14 +32,13 @@ def get_sum_2(instructions):
     return total
 
 
-def main():
-    commands = decorrupt_file("puzzle_input/3.txt", pattern_p2)
-    total = get_sum_2(commands)
-    print(total)
+def day3(text_data):
+    commands = decorrupt_file(text_data, pattern_p2)
+    return get_sum_2(commands)
 
 
 if __name__ == "__main__":
-    main()
+    timeit(day3, "../puzzle_input/3.txt")
 
 
 # Answer for part 1:

@@ -1,3 +1,4 @@
+from helper import timeit
 import re
 
 TEST = r"""
@@ -46,16 +47,16 @@ def xmas_count_p1(mtrx: list[str]):
 
     # down right
     for d in range(-(rows - 1), cols):
-        right_diag = "".join([
-            mtrx[i][j] for i in range(rows) for j in range(cols) if j - i == d
-        ])
+        right_diag = "".join(
+            [mtrx[i][j] for i in range(rows) for j in range(cols) if j - i == d]
+        )
         count += get_count(right_diag, XMAS)
 
     # down left
     for s in range(rows + cols - 1):
-        left_diag = "".join([
-            mtrx[i][j] for i in range(rows) for j in range(cols) if i + j == s
-        ])
+        left_diag = "".join(
+            [mtrx[i][j] for i in range(rows) for j in range(cols) if i + j == s]
+        )
         count += get_count(left_diag, XMAS)
 
     return count
@@ -71,15 +72,15 @@ def xmas_count_p2(mtrx: list[str]):
     return count
 
 
-def main():
-    word_search = parse_text("puzzle_input/4.txt")
+def day4(text_data):
+    word_search = parse_text(text_data)
     count = xmas_count_p1(word_search)
     count = xmas_count_p2(word_search)
     print(count)
 
 
 if __name__ == "__main__":
-    main()
+    timeit(day4, "../puzzle_input/4.txt")
 
 
 # part 1 answers:
